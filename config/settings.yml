@@ -25,4 +25,4 @@ database:
   database: "_env:PGDATABASE:website"
   poolsize: "_env:PGPOOLSIZE:10"
 
-#analytics: UA-YOURCODE
+analytics: UA-52970279-1
