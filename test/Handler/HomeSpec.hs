@@ -4,29 +4,38 @@ import TestImport
 
 spec :: Spec
 spec = withApp $ do
-    it "loads the index and checks it looks right" $ do
+    describe "HomeR route" $ do
+      it "returns a 200 status" $ do
         get HomeR
         statusIs 200
-        htmlAllContain "h1" "Welcome to Yesod"
 
-        request $ do
-            setMethod "POST"
-            setUrl HomeR
-            addToken
-            fileByLabel "Choose a file" "test/Spec.hs" "text/plain" -- talk about self-reference
-            byLabel "What's on the file?" "Some Content"
-
-        statusIs 200
-        -- more debugging printBody
-        htmlCount ".message" 1
-        htmlAllContain ".message" "Some Content"
-        htmlAllContain ".message" "text/plain"
-
-    -- This is a simple example of using a database access in a test.  The
-    -- test will succeed for a fresh scaffolded site with an empty database,
-    -- but will fail on an existing database with a non-empty user table.
-    it "leaves the user table empty" $ do
+      it "has the right content" $ do
         get HomeR
-        statusIs 200
-        users <- runDB $ selectList ([] :: [Filter User]) []
-        assertEqual "user table empty" 0 $ length users
+        htmlAnyContain "h1" "Brian Weiser"
+        htmlAnyContain "h2" "Web Developer"
+
+      it "doesn't have the wrong content" $ do
+        get HomeR
+        htmlNoneContain "a" "GitHub Repo"
+
+      describe "useful links" $ do
+        it "has a link to projects" $ do
+          get HomeR
+          htmlAnyContain "a" "Projects"
+
+        it "has a link to resume" $ do
+          get HomeR
+          htmlAnyContain "a" "Resume"
+
+      describe "social profile links" $ do
+        it "has an email link" $ do
+          get HomeR
+          htmlAnyContain "a.footerLinkImg" "Contact"
+
+        it "has my LinkedIn profile link" $ do
+          get HomeR
+          htmlAnyContain "a.footerLinkImg" "LinkedIn"
+
+        it "has my GitHub profile link" $ do
+          get HomeR
+          htmlAnyContain "a.footerLinkImg" "GitHub"
