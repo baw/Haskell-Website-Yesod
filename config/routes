@@ -7,3 +7,6 @@
 / HomeR GET
 /projects ProjectsR GET
 /resume ResumeR GET
+
+/asteroids AsteroidsR GET
+/community_chat CommunityChatR GET
