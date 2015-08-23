@@ -88,16 +88,16 @@
         <p>
           (I'll add info here soon.)
 
-  <footer>
-    <ul class="socialLinks">
-      <li>
-        <a class="footerLinkImg contact" id="contact" href="">
-          <div class="text">Contact
+<footer>
+  <ul class="socialLinks">
+    <li>
+      <a class="footerLinkImg contact" id="contact" href="">
+        <div class="text">Contact
 
-      <li>
-        <a class="footerLinkImg github" href="https://github.com/baw">
-          <div class="text">GitHub
+    <li>
+      <a class="footerLinkImg github" href="https://github.com/baw">
+        <div class="text">GitHub
 
-      <li>
-        <a class="footerLinkImg linkedin" href="https://www.linkedin.com/in/brianandrewweiser">
-          <div class="text">LinkedIn
+    <li>
+      <a class="footerLinkImg linkedin" href="https://www.linkedin.com/in/brianandrewweiser">
+        <div class="text">LinkedIn
