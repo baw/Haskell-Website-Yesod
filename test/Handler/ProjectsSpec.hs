@@ -14,6 +14,7 @@ spec = withApp $ do
           htmlAnyContain "h3.title" "Projects"
 
         it "has projects on it" $ do
+          get ProjectsR
           htmlAnyContain "a" "GitHub Repo"
 
         it "has suggestion for checking back" $ do

@@ -14,10 +14,6 @@ spec = withApp $ do
         htmlAnyContain "h1" "Brian Weiser"
         htmlAnyContain "h2" "Web Developer"
 
-      it "doesn't have the wrong content" $ do
-        get HomeR
-        htmlNoneContain "a" "GitHub Repo"
-
       describe "useful links" $ do
         it "has a link to projects" $ do
           get HomeR
@@ -25,7 +21,7 @@ spec = withApp $ do
 
         it "has a link to resume" $ do
           get HomeR
-          htmlAnyContain "a" "Resume"
+          htmlAnyContain "a" "Résumé"
 
       describe "social profile links" $ do
         it "has an email link" $ do

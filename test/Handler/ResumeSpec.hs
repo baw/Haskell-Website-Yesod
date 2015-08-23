@@ -11,5 +11,5 @@ spec = withApp $ do
 
       it "has the right content" $ do
         get ResumeR
-        htmlAllContain "h3.title" "Résumé"
-        htmlAnyContain "p" "Check out my LinkedIn Page!"
+        htmlAnyContain "h3.title" "Résumé"
+        htmlAnyContain "p" "Check out my"
