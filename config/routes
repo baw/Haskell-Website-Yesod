@@ -6,3 +6,4 @@
 
 / HomeR GET
 /projects ProjectsR GET
+/resume ResumeR GET
