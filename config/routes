@@ -10,3 +10,4 @@
 
 /asteroids AsteroidsR GET
 /community_chat CommunityChatR GET
+/blog BlogR GET
