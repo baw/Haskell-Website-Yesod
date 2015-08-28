@@ -1,5 +1,20 @@
-ghc:
-    - 7.4
-    - 7.6
-    - 7.8
+addons:
+    apt:
+        sources:
+            - hvr-ghc
+        packages:
+            - ghc-7.8.4
+before_install:
+    - mkdir -p ~/.local/bin
+    - export PATH=~/.local/bin:%PATH
+    - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.2.0/stack-0.1.2.0-x86_64-linux.gz | gunzip > ~/.local/bin/stack
+    - chmod a+x ~/.local/bin/stack
+
+    - export PATH=/opt/ghc/7.8.4/bin:$PATH
+install:
+    - ./travis_long stack --no-terminal --skip-ghc-check setup
+    - ./travis_long stack --no-terminal --skip-ghc-check test --only-snapshot
 language: haskell
+script:
+    - stack --no-terminal --skip-ghc-check test
+sudo: false
