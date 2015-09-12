@@ -5,6 +5,9 @@ addons:
         packages:
             - ghc-7.8.4
 before_install:
+    - apt-get update -qq
+    - apt-get install -y tar curl sleep date uname
+
     - mkdir -p ~/.local/bin
     - export PATH=~/.local/bin:%PATH
     - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.4.0/stack-0.1.4.0-x86_64-linux.tar.gz | tar xz -C ~/.local/bin
@@ -16,4 +19,3 @@ install:
 language: haskell
 script:
     - stack --no-terminal --skip-ghc-check test
-sudo: false
