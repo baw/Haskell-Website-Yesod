@@ -7,8 +7,7 @@ addons:
 before_install:
     - mkdir -p ~/.local/bin
     - export PATH=~/.local/bin:%PATH
-    - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.2.0/stack-0.1.2.0-x86_64-linux.gz | gunzip > ~/.local/bin/stack
-    - chmod a+x ~/.local/bin/stack
+    - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.4.0/stack-0.1.4.0-x86_64-linux.tar.gz | tar xz -C ~/.local/bin
 
     - export PATH=/opt/ghc/7.8.4/bin:$PATH
 install:
