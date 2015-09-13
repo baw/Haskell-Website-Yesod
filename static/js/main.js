@@ -87,5 +87,5 @@
 
   addContact();
   addEvents();
-	buttonClick();
+  buttonClick();
 })();
