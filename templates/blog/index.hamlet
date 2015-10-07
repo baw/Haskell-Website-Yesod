@@ -1,0 +1,7 @@
+<h1>All Posts
+
+<div>
+  <ul .blog-posts>
+    $forall Entity id post <- allPosts
+      <li .blog-post>
+        <a href=@{BlogShowR id}>#{blogPostTitle post}

@@ -2,5 +2,8 @@ module Handler.Blog where
 
 import Import
 
-getBlogR :: Handler Html
-getBlogR = error "Not yet implemented: getBlogR"
+getBlogIndexR :: Handler Html
+getBlogIndexR = do
+  allPosts <- runDB $ selectList [] [Desc BlogPostId]
+  defaultLayout $ do
+    $(widgetFile "blog/index")
