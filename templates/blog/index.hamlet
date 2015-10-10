@@ -1,6 +1,8 @@
-<h1>All Posts
+<div .blog-post-container>
+  <h1>
+    <img .monogram src="http://res.cloudinary.com/brian/image/upload/c_scale,w_150/v1444263163/monogram.png">
+    <span .titleText>Brian Weiser's Blog
 
-<div>
   <ul .blog-posts>
     $forall Entity id post <- allPosts
       <li .blog-post>
