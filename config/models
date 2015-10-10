@@ -11,7 +11,7 @@ Email
 BlogPost
     user UserId
     title Text
-    article Text
+    article Html
     createdDate UTCTime default=now()
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)
