@@ -127,6 +127,19 @@ a:hover {
   background-position: -10px -120px;
 }
 
+.blog-post-container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.monogram {
+  width: 150px;
+}
+
+.titleText {
+  display: block;
+}
 
 @media all and (min-height:400px) {
   .main {
@@ -143,5 +156,18 @@ a:hover {
 @media all and (min-height:600px) {
   .main {
     top:37%;
+  }
+}
+
+@media all and (min-width:768px) {
+  .blog-post-container {
+    width: 80%;
+    text-align: left;
+  }
+
+  .titleText {
+    display: inline;
+    position: relative;
+    top: -67px;
   }
 }
