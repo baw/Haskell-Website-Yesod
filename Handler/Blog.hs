@@ -4,7 +4,7 @@ import Import
 
 getBlogIndexR :: Handler Html
 getBlogIndexR = do
-  allPosts <- runDB $ selectList [] [Desc BlogPostId]
+  allPosts <- runDB $ selectList [] [Desc BlogPostCreatedDate, LimitTo 5]
   defaultLayout $ do
     setTitle "Blog - Brian Weiser - Web Developer"
     $(widgetFile "blog/index")
