@@ -7,3 +7,7 @@
     $forall Entity id post <- allPosts
       <li .blog-post>
         <a href=@{BlogShowR id}>#{blogPostTitle post}
+
+  <div>
+    $forall Entity id post <- firstPost
+        #{blogPostArticle post}
