@@ -1,12 +1,13 @@
 module Handler.Blog where
 
 import Import
+import Prelude ((!!))
 
 getBlogIndexR :: Handler Html
 getBlogIndexR = do
   allPosts <- runDB $ selectList [] [Desc BlogPostCreatedDate, LimitTo 5]
-  -- TODO: figure out how to index into [Entity BlogPost]
-  let firstPost = take 1 allPosts
+  let Entity _ firstPost = allPosts !! 0
+  let Entity nextPostId nextPost = allPosts !! 1
   defaultLayout $ do
     setTitle "Blog - Brian Weiser - Web Developer"
     $(widgetFile "blog/index")

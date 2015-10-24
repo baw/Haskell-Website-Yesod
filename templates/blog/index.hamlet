@@ -3,11 +3,16 @@
     <img .monogram src="http://res.cloudinary.com/brian/image/upload/c_scale,w_150/v1444263163/monogram.png">
     <span .titleText>Brian Weiser's Blog
 
-  <ul .blog-posts>
-    $forall Entity id post <- allPosts
-      <li .blog-post>
-        <a href=@{BlogShowR id}>#{blogPostTitle post}
+  <div .left>
+    <ul .blog-posts>
+      $forall Entity id post <- allPosts
+        <li .blog-post>
+          <a href=@{BlogShowR id}>#{blogPostTitle post}
 
-  <div>
-    $forall Entity id post <- firstPost
-        #{blogPostArticle post}
+  <div .right>
+    <div .article>
+      <div .title>
+        #{blogPostTitle firstPost}
+      <div .post>
+        #{blogPostArticle firstPost}
+      <a .nextPost href=@{BlogShowR nextPostId}>Next article: #{blogPostTitle nextPost} -->
