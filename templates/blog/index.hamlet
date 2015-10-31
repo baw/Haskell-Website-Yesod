@@ -5,7 +5,7 @@
 
   <div .left>
     <ul .blog-posts>
-      $forall Entity id post <- allPosts
+      $forall Entity id post <- fiveMostRecentPosts
         <li .blog-post>
           <a href=@{BlogShowR id}>#{blogPostTitle post}
 
@@ -15,4 +15,9 @@
         #{blogPostTitle firstPost}
       <div .post>
         #{blogPostArticle firstPost}
-      <a .nextPost href=@{BlogShowR nextPostId}>Next article: #{blogPostTitle nextPost} -->
+      $maybe blogPost <- maybePreviousPost
+        $with Entity postId post <- blogPost
+          <a .nextPost href=@{BlogShowR postId}><-- Previous article: #{blogPostTitle post}
+      $maybe blogPost <- maybeNextPost
+        $with Entity postId post <- blogPost
+          <a .nextPost href=@{BlogShowR postId}>Next article: #{blogPostTitle post} -->
