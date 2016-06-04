@@ -4,7 +4,7 @@ import TestImport
 
 spec :: Spec
 spec = withApp $ do
-
-    describe "getBlogR" $ do
-        error "Spec not implemented: getBlogR"
-
+    describe "BlogIndexR route" $ do
+      it "returns a 200 status" $ do
+        get BlogIndexR
+        statusIs 200

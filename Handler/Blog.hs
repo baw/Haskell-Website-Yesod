@@ -9,6 +9,7 @@ title = "Blog - Brian Weiser - Web Developer"
 getBlogIndexR :: Handler Html
 getBlogIndexR = do
   fiveMostRecentPosts <- runDB $ selectList [] [Desc BlogPostCreatedDate, LimitTo 5]
+  -- fails if no posts
   let Entity _ firstPost = fiveMostRecentPosts !! 0
   let maybePreviousPost = if (length fiveMostRecentPosts) >= 2 then Just (fiveMostRecentPosts !! 1) else Nothing
   let maybeNextPost = Nothing
