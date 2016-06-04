@@ -10,3 +10,5 @@
 
 /asteroids AsteroidsR GET
 /community_chat CommunityChatR GET
+/blog BlogIndexR GET
+/blog/!#BlogPostId BlogShowR GET

@@ -8,5 +8,10 @@ Email
     user UserId Maybe
     verkey Text Maybe
     UniqueEmail email
+BlogPost
+    user UserId
+    title Text
+    article Html
+    createdDate UTCTime default=now()
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

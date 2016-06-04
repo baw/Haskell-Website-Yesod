@@ -26,8 +26,7 @@ $newline never
     <script>
       document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
   <body>
-    <div class="container">
-      ^{pageBody pc}
+    ^{pageBody pc}
 
     $maybe analytics <- appAnalytics $ appSettings master
       <script>
@@ -40,5 +39,3 @@ $newline never
           ga('create', '#{analytics}', 'auto');
           ga('send', 'pageview');
         }
-
-    <script src="/static/js/main.js">
