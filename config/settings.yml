@@ -18,8 +18,8 @@ ip-from-header: "_env:IP_FROM_HEADER:false"
 # skip-combining: false
 
 database:
-  user:     "_env:PGUSER:website"
-  password: "_env:PGPASS:website"
+  user:     "_env:PGUSER:"
+  password: "_env:PGPASS:"
   host:     "_env:PGHOST:localhost"
   port:     "_env:PGPORT:5432"
   database: "_env:PGDATABASE:website"

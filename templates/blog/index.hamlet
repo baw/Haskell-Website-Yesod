@@ -7,18 +7,20 @@
   <div .left.recent-posts>
     <h2>Recent Posts</h2>
     <ul .blog-posts>
-      $forall Entity id post <- fiveMostRecentPosts
+      $forall Entity postId post <- fiveMostRecentPosts
         <li .blog-post>
-          <a href=@{BlogShowR id}>#{blogPostTitle post}
+          <a href=@{BlogShowR postId}>#{blogPostTitle post}
 
   <div .right.article>
-    <h2 .title>
-      #{blogPostTitle firstPost}
-    <div .post>
-      #{blogPostArticle firstPost}
-    $maybe blogPost <- maybePreviousPost
-      $with Entity postId post <- blogPost
+    $maybe firstPost <- maybeFirstPost
+      $with Entity _ post <- firstPost
+        <h2 .title>
+          #{blogPostTitle post}
+        <div .post>
+          #{blogPostArticle post}
+    $maybe previousPost <- maybePreviousPost
+      $with Entity postId post <- previousPost
         <a .nextPost href=@{BlogShowR postId}><-- Previous article: #{blogPostTitle post}
-    $maybe blogPost <- maybeNextPost
-      $with Entity postId post <- blogPost
+    $maybe nextPost <- maybeNextPost
+      $with Entity postId post <- nextPost
         <a .nextPost href=@{BlogShowR postId}>Next article: #{blogPostTitle post} -->

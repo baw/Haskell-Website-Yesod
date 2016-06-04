@@ -6,12 +6,14 @@ import Database.Persist.Sql (fromSqlKey, toSqlKey)
 
 title = "Blog - Brian Weiser - Web Developer"
 
+maybeElement :: [a] -> Int -> Maybe a
+maybeElement xs i = if (length xs > i) then Just (xs !! i) else Nothing
+
 getBlogIndexR :: Handler Html
 getBlogIndexR = do
   fiveMostRecentPosts <- runDB $ selectList [] [Desc BlogPostCreatedDate, LimitTo 5]
-  -- fails if no posts
-  let Entity _ firstPost = fiveMostRecentPosts !! 0
-  let maybePreviousPost = if (length fiveMostRecentPosts) >= 2 then Just (fiveMostRecentPosts !! 1) else Nothing
+  let maybeFirstPost = maybeElement fiveMostRecentPosts 0
+  let maybePreviousPost = maybeElement fiveMostRecentPosts 1
   let maybeNextPost = Nothing
   defaultLayout $ do
     setTitle title
@@ -24,9 +26,8 @@ getBlogShowR blogPostId = do
   closePosts <- runDB $ selectList [BlogPostId >=. (toSqlKey previousBlogPostId)] [Asc BlogPostCreatedDate, LimitTo 3]
   let Entity previousPostId _ = closePosts !! 0
   let hasPrevious = ((fromSqlKey previousPostId) == previousBlogPostId)
-  let firstEntityPost = closePosts !! (if hasPrevious then 1 else  0)
+  let maybeFirstPost = Just (closePosts !! (if hasPrevious then 1 else  0))
   let maybePreviousPost = if hasPrevious then Just (closePosts !! 0) else Nothing
-  let Entity _ firstPost = firstEntityPost
   let adjustNextPostIndex = if hasPrevious then 1 else 0
   let maybeNextPost = if (length closePosts) >= (2 + adjustNextPostIndex) then Just (closePosts !! (1 + adjustNextPostIndex)) else Nothing
   defaultLayout $ do

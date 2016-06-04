@@ -1,4 +1,26 @@
+sudo: false
+
 addons:
-  postgresql: "9.4"
-language: haskell
-ghc: 7.8
+  apt:
+    sources:
+      - hvr-ghc
+    packages:
+      - ghc-7.10.2
+before_install:
+  # Download and unpack the stack executable
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  - export PATH=/opt/ghc/7.10.2/bin:$PATH
+before_script:
+  - psql -c 'create database website_test;' -U postgres
+# Caching so the next build will be fast too.
+cache:
+  directories:
+    - $HOME/.stack
+env:
+  - PGUSER="postgres" PGPASS=""
+script:
+  - stack --no-terminal --skip-ghc-check test
+services:
+  - postgresql
