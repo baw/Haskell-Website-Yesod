@@ -4,7 +4,6 @@ import TestImport
 
 spec :: Spec
 spec = withApp $ do
-
     describe "Redirects" $ do
       it "redirects asteroids" $ do
         get AsteroidsR
