@@ -4,6 +4,7 @@ import Import
 import Prelude ((!!))
 import Database.Persist.Sql (fromSqlKey, toSqlKey)
 
+title :: IsString a => a
 title = "Blog - Brian Weiser - Web Developer"
 
 maybeElement :: [a] -> Int -> Maybe a
