@@ -6,9 +6,7 @@ redirect301 :: String -> Handler Html
 redirect301 = redirectWith status301
 
 getAsteroidsR :: Handler Html
-getAsteroidsR = do
-    redirect301 "https://baw.github.io/asteroids/"
+getAsteroidsR = redirect301 "https://baw.github.io/asteroids/"
 
 getCommunityChatR :: Handler Html
-getCommunityChatR = do
-    redirect301 "http://baw.github.io/community_chat/"
+getCommunityChatR = redirect301 "http://baw.github.io/community_chat/"
