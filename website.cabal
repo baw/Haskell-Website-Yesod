@@ -26,6 +26,7 @@ library
                      Handler.Resume
                      Handler.Redirects
                      Handler.Blog
+                     Handler.Util
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
