@@ -13,69 +13,14 @@
 
       <div class="projects pageLinks" id="projects">
         <h3 class="title">Projects
-
-        <div class="project left">
-          <a href="http://notes.brianweiser.io">
-            <img src="//res.cloudinary.com/brian/image/upload/v1420171423/the_purple_notes.jpg" alt="The Purple Notes">
-
-            <p>
-              <a href="http://notes.brianweiser.io">
-                The Purple Notes
-
-            <p>
-              <a href="http://github.com/baw/ThePurpleNotes">
-                GitHub Repo
-
-        <div class="project right">
-          <a href="http://baw.github.io/community_chat/">
-            <img src="//res.cloudinary.com/brian/image/upload/v1413764916/community_chat.png" alt="Community Chat">
-
-          <div>
-            <p>
-              <a href="http://baw.github.io/community_chat/">
-                Community Chat
-
-            <p>
-              <a href="http://github.com/baw/community_chat/">
-                GitHub Repo
-
-        <div class="project left">
-          <a href="https://github.com/baw/sentimetrics">
-            <img src="//res.cloudinary.com/brian/image/upload/v1413764915/sentimetrics.jpg" alt="Sentimetrics">
-
-          <div>
-            <p>
-              <a href="https://github.com/baw/sentimetrics">
-                Sentimetrics
-
-            <p>
-              <a href="https://github.com/baw/sentimetrics">
-                GitHub Repo
-
-        <div class="project right">
-          <a href="http://baw.github.io/Data-Visualization-Demo/">
-            <img src="//res.cloudinary.com/brian/image/upload/v1422047186/data_visualization_demo.png" alt="Data Visualization Demo">
-
-          <div>
-            <p>
-              <a href="http://baw.github.io/Data-Visualization-Demo/">
-                Data Visualization Demo
-
-            <p>
-              <a href="https://github.com/baw/Data-Visualization-Demo">
-                GitHub Repo
-
-        <div class="project left">
-          <a href="https://github.com/baw/Haskell-Website">
-            <img src="//res.cloudinary.com/brian/image/upload/v1423170255/website.png" alt="Website">
-
-          <div>
-            <p>
-              <a href="https://github.com/baw/Haskell-Website">
-                This Website (made with Haskell using the Snap Framework)
-
-            <p>
-              <a href="https://github.com/baw/Haskell-Website">
+        <div class="projectContainer">
+          $forall Entity _ project <- projects
+            <div class="project">
+              <a href="#{projectUrl project}">
+                <img src="#{projectImageUrl project}" alt="#{projectName project}">
+              <a href="#{projectUrl project}">
+                #{projectName project}
+              <a href="#{projectGithubUrl project}">
                 GitHub Repo
 
         <p class="moreProjects">Check back for more projects!

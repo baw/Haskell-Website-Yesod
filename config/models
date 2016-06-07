@@ -13,5 +13,10 @@ BlogPost
     title Text
     article Html
     createdDate UTCTime default=now()
+Project
+    name Text
+    imageUrl Text
+    githubUrl Text
+    url Text
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

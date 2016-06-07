@@ -15,7 +15,7 @@ spec = withApp $ do
 
         it "has projects on it" $ do
           get ProjectsR
-          htmlAnyContain "a" "GitHub Repo"
+          htmlAnyContain ".projectContainer" ""
 
         it "has suggestion for checking back" $ do
           get ProjectsR
