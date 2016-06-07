@@ -80,7 +80,9 @@ var buttonClick = function () {
     }
 
     if(!window.location.href.match(/localhost/)){
-    	ga("send", "pageview", "/" + pushStateLocation);
+      setTimeout(function () {
+        ga("send", "pageview", "/" + pushStateLocation);
+      });
     }
   };
 
