@@ -1,1 +1,11 @@
-{ "name": "appname", "version": "0.0.1", "dependencies": {} }
+{
+  "name": "Haskell-Yesod-Website",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "intern": "^3.2.3"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/intern-runner config=intern-test/intern"
+  }
+}
