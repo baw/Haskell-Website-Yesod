@@ -17,3 +17,6 @@ cabal.sandbox.config
 *.swp
 *.keter
 .vagrant/
+
+npm-debug.log*
+node_modules

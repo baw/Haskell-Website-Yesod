@@ -13,7 +13,23 @@ before_install:
   - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
   - export PATH=/opt/ghc/7.10.2/bin:$PATH
 before_script:
+  # Update phantom js to 2.0.0
+  - mkdir travis-phantomjs
+  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+  - tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -C $PWD/travis-phantomjs
+  - export PATH=$PWD/travis-phantomjs:$PATH
+  - phantomjs --version
+  # Add database tables
+  - psql -c 'create database website;' -U postgres
   - psql -c 'create database website_test;' -U postgres
+  - npm install
+  # Run phantomjs in the background
+  - (phantomjs --webdriver=4444 > /dev/null & ) || /bin/true
+  - stack install yesod-bin cabal-install --install-ghc
+  - stack install
+  # Run the built binary in the background
+  - (website > /dev/null & ) || /bin/true
+  - sleep 5
 # Caching so the next build will be fast too.
 cache:
   directories:
@@ -22,5 +38,6 @@ env:
   - PGUSER="postgres" PGPASS=""
 script:
   - stack --no-terminal --skip-ghc-check test
+  - npm run test
 services:
   - postgresql
