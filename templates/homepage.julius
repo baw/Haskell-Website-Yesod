@@ -2,7 +2,6 @@ var buttonClick = function () {
 	var button = document.getElementById("#{ rawJS clickId }");
 	if (button) {
 		button.click();
-		console.log("click");
 	}
 };
 
