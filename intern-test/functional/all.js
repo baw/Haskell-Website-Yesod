@@ -1,3 +1,5 @@
 define([
-    './home'
+    './home',
+    './projects',
+    './resume'
 ], function () {});
