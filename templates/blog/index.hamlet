@@ -1,7 +1,7 @@
 <div .blog-post-container>
   <h1 .header>
     <a href="/blog">
-      <img .monogram src="http://res.cloudinary.com/brian/image/upload/c_scale,w_150/v1444263163/monogram.png">
+      <img .monogram src="//res.cloudinary.com/brian/image/upload/c_scale,w_150/v1444263163/monogram.png">
       <span .titleText>Brian Weiser's Blog
 
   <div .left.recent-posts>
