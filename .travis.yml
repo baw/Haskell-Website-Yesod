@@ -6,6 +6,9 @@ addons:
       - hvr-ghc
     packages:
       - ghc-7.10.2
+after_script:
+  # kill phantomjs that's running in the background
+  - ps -A | grep -i phantomj[s] | grep -oP '^([ ])*\K([0-9])+' | xargs kill -9
 before_install:
   # Download and unpack the stack executable
   - mkdir -p ~/.local/bin
