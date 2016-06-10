@@ -34,7 +34,18 @@ define([
             return function () {
                 return this.parent
                     .then(self.clickLink(name))
-                    .then(self.checkPagesLowered(1, name));
+                    .then(self.checkPagesLowered(1, name))
+                    .then(self.checkUrl(name));
+            };
+        },
+
+        checkUrl: function (name) {
+            return function () {
+                return this.parent
+                    .getCurrentUrl()
+                    .then(function (url) {
+                        name && assert.include(url, '/' + name);
+                    });
             };
         }
     };

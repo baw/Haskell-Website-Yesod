@@ -36,13 +36,15 @@ define([
             });
 
             tdd.test('projects', function () {
+                var name = 'projects';
                 return this.remote
-                    .then(util.checkLink('projects'));
+                    .then(util.checkLink(name));
             });
 
             tdd.test('resume', function () {
+                var name = 'resume';
                 return this.remote
-                    .then(util.clickLink('resume'));
+                    .then(util.checkLink(name));
             });
         });
     });
