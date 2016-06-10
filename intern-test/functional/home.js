@@ -35,16 +35,12 @@ define([
                     .then(util.checkPagesLowered(0));
             });
 
-            tdd.test('projects', function () {
-                var name = 'projects';
-                return this.remote
-                    .then(util.checkLink(name));
-            });
-
-            tdd.test('resume', function () {
-                var name = 'resume';
-                return this.remote
-                    .then(util.checkLink(name));
+            var links = ['projects', 'resume'];
+            links.forEach(function (name) {
+                tdd.test(name, function () {
+                    return this.remote
+                        .then(util.checkLink(name));
+                });
             });
         });
     });
