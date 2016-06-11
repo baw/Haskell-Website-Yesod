@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
-    "intern": "^3.2.3"
+    "intern": "^3.2.3",
+    "less": "^2.7.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/intern-runner config=intern-test/intern"
