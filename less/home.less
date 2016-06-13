@@ -8,10 +8,10 @@ footer, .main {
   top:20%;
   text-align:center;
   transition: top 1s;
-}
 
-.main.raise {
-  top:0;
+  &.raise {
+    top:0;
+  }
 }
 
 footer {
@@ -21,10 +21,10 @@ footer {
 .mainLinks {
   padding-left:0;
   list-style:none;
-}
 
-.mainLinks li {
-  display:inline-block;
+  li {
+    display:inline-block;
+  }
 }
 
 .pageLinks {
@@ -33,10 +33,10 @@ footer {
   top:-1500px;
   width:100%;
   transition: top 1s;
-}
 
-.pageLinks.lower {
-  top: 150px;
+  .lower {
+    top: 150px;
+  }
 }
 
 .scroll {
@@ -52,24 +52,24 @@ footer {
   width:325px;
   padding-left:0;
   margin:auto;
-}
 
-.socialLinks li {
-  display:inline-block;
-  margin-right:8px;
-}
+  li {
+    display:inline-block;
+    margin-right:8px;
+  }
 
-.socialLinks a {
-  text-decoration:none;
-}
+  .text {
+    display:inline-block;
+  }
 
-.socialLinks .text {
-  display:inline-block;
-}
+  a {
+    text-decoration:none;
 
-.socialLinks a:hover .text {
-  text-decoration:underline;
-  color:black;
+    &:hover .text {
+      text-decoration:underline;
+      color:black;
+    }
+  }
 }
 
 .footerLinkImg {
