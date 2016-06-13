@@ -1,5 +1,7 @@
 #!/bin/sh
 
+npm run compile-less
+
 vagrant ssh -c "cd /vagrant; stack build"
 cp .stack-work/install/x86_64-linux/lts-3.1/7.10.2/bin/website ./website
 branch="deploy-$(date +%F)"

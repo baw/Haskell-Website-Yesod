@@ -1,21 +1,3 @@
-html, body {
-  padding:0;
-  margin:0;
-  font-family:"Raleway";
-}
-
-body {
-  overflow-y: hidden;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
 footer, .main {
   position:absolute;
   right:15%;
@@ -43,15 +25,6 @@ footer {
 
 .mainLinks li {
   display:inline-block;
-}
-
-a {
-  text-decoration:none;
-}
-
-a:hover {
-  text-decoration:underline;
-  color:black;
 }
 
 .pageLinks {
@@ -99,34 +72,6 @@ a:hover {
   color:black;
 }
 
-.projectContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.project {
-  display: flex;
-  flex: 0 0 49%;
-  flex-wrap: nowrap;
-  flex-direction: column;
-}
-
-.project a {
-  display: flex;
-  flex: 0 0 auto;
-  align-self: center;
-  margin-bottom: 15px;
-}
-
-.project a:nth-child(2) {
-  margin-bottom: 10px
-}
-
-.moreProjects {
-  min-height: 75px;
-  clear: both;
-}
-
 .footerLinkImg {
   background-repeat: no-repeat;
   padding:10px 0 10px 40px;
@@ -145,36 +90,6 @@ a:hover {
   background-position: -10px -120px;
 }
 
-.blog-post-container {
-  width: 90%;
-  margin: auto;
-  text-align: center;
-}
-
-.monogram {
-  width: 150px;
-}
-
-.titleText {
-  display: block;
-}
-
-.recent-posts {
-  width: 20%;
-}
-
-.header a {
-  text-decoration: none;
-}
-
-.article {
-  width: 80%;
-}
-
-.article h2, .recent-posts h2 {
-  margin-top: 0;
-}
-
 @media all and (min-height:400px) {
   .main {
     top:30%;
@@ -190,18 +105,5 @@ a:hover {
 @media all and (min-height:600px) {
   .main {
     top:37%;
-  }
-}
-
-@media all and (min-width:768px) {
-  .blog-post-container {
-    width: 80%;
-    text-align: left;
-  }
-
-  .titleText {
-    display: inline;
-    position: relative;
-    top: -67px;
   }
 }

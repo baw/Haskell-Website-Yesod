@@ -20,3 +20,5 @@ cabal.sandbox.config
 
 npm-debug.log*
 node_modules
+
+static/css
