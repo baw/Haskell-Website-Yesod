@@ -26,6 +26,7 @@ before_script:
   - psql -c 'create database website;' -U postgres
   - psql -c 'create database website_test;' -U postgres
   - npm install
+  - npm run compile-less
   # Run phantomjs in the background
   - (phantomjs --webdriver=4444 > /dev/null & ) || /bin/true
   - stack install yesod-bin cabal-install --install-ghc
