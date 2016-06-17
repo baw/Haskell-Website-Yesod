@@ -1,8 +1,10 @@
-/static StaticR Static appStatic
 /auth   AuthR   Auth   getAuth
 
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
+
+/static/css/main.css CssR GET
+!/static StaticR Static appStatic
 
 / HomeR GET
 /projects ProjectsR GET

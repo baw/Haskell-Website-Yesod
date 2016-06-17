@@ -14,3 +14,7 @@ getFaviconR = return $ TypedContent "image/x-icon"
 getRobotsR :: Handler TypedContent
 getRobotsR = return $ TypedContent typePlain
                     $ toContent $(embedFile "config/robots.txt")
+
+getCssR :: Handler TypedContent
+getCssR = return $ TypedContent typeCss
+                 $ toContent $(embedFile "static/css/main.css")
