@@ -10,6 +10,8 @@ Vagrant.configure("2") do |config|
         echo Create postgres user
         sudo -u postgres psql -c "CREATE USER vagrant;"
         sudo -U vagrant psql -c "CREATE DATABASE website;"
+        echo Set /vargrant directory to load on ssh
+        echo "cd /vagrant" >> /home/vagrant/.bashrc
     SHELL
 
     config.vm.provision "shell", run: "always", inline: <<-SHELL
