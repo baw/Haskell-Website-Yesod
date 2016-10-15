@@ -1,10 +1,3 @@
-var buttonClick = function () {
-	var button = document.getElementById("#{ rawJS clickId }");
-	if (button) {
-		button.click();
-	}
-};
-
 (function () {
   var mainElm = document.getElementById("main");
   var projectsElm = document.getElementById("projects");
@@ -34,10 +27,23 @@ var buttonClick = function () {
     });
   };
 
+  var buttonClick = function () {
+  	var button = document.getElementById("#{ rawJS clickId }");
+  	if (button) {
+  		button.click();
+  	}
+  };
+
+  var getHeight = function (elm) {
+    var styles = getComputedStyle(elm);
+    var height = styles.height;
+    return parseFloat(height);
+  };
+
   var mainMove = function (event) {
     event.preventDefault();
-    var projectsHeight = resumeElm.style.height;
-    var resumeHeight = projectsElm.style.height;
+    var projectsHeight = getHeight(resumeElm);
+    var resumeHeight = getHeight(projectsElm);
 
     var height = projectsHeight > resumeHeight ? projectsHeight : resumeHeight;
 
