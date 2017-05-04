@@ -8,10 +8,13 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "shell", inline: <<-SHELL
         echo Create postgres user
-        sudo -u postgres psql -c "CREATE USER vagrant;"
-        sudo -U vagrant psql -c "CREATE DATABASE website;"
+        sudo -u postgres psql -c "CREATE USER vagrant WITH PASSWORD 'password';"
+        sudo -u postgres createdb -O vagrant website
         echo Set /vargrant directory to load on ssh
         echo "cd /vagrant" >> /home/vagrant/.bashrc
+
+        echo Installing stack
+        curl -sSL https://get.haskellstack.org/ | sh
     SHELL
 
     config.vm.provision "shell", run: "always", inline: <<-SHELL
