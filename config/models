@@ -16,7 +16,7 @@ BlogPost
 Project
     name Text
     imageUrl Text
-    githubUrl Text
+    githubUrl Text Maybe
     url Text
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)
