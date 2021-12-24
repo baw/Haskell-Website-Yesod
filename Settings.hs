@@ -5,7 +5,10 @@
 -- declared in the Foundation.hs file.
 module Settings where
 
-import ClassyPrelude.Yesod
+import ClassyPrelude.Yesod         (($), (.:), (<$>), Bool (False), ByteString, CombineSettings, 
+                                    combineScripts', combineStylesheets', def, either, error, id, Int, 
+                                    FromJSON (parseJSON), fromString, Maybe, mempty, return, Route, 
+                                    Static, String, Text, Value)
 import Control.Exception           (throw)
 import Data.Aeson                  (Result (..), fromJSON, withObject, (.!=),
                                     (.:?))
