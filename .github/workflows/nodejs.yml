@@ -23,7 +23,7 @@ jobs:
     - name: Install phatom js
       run: npm install phantomjs-prebuilt
     - name: Run phantom js in background
-      run: (npm-exec phantomjs --webdriver=4444 > /dev/null & ) || /bin/true
+      run: (npm exec phantomjs --webdriver=4444 > /dev/null & ) || /bin/true
 #   lint:
 #     runs-on: ${{ matrix.operating-system }}
 #     strategy:
