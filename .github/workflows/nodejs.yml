@@ -9,13 +9,18 @@ on:
       - main
 
 jobs:
-  setup:
+  test:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
         node-version: [16]
         operating-system: [ 'ubuntu-20.04' ]
     steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
     - name: node version
       run: node --version
     - name: npm version
@@ -24,6 +29,10 @@ jobs:
       run: npm install phantomjs-prebuilt
     - name: Run phantom js in background
       run: (npm exec phantomjs --webdriver=4444 > /dev/null & ) || /bin/true
+    - name: npm install
+      run: npm ci
+    - name: npm run test
+      run: npm run test
 #   lint:
 #     runs-on: ${{ matrix.operating-system }}
 #     strategy:
@@ -57,20 +66,3 @@ jobs:
 #       run: npm ci
 #     - name: npm run build
 #       run: npm run build
-  test:
-    needs: setup
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        node-version: [16]
-        operating-system: [ 'ubuntu-20.04' ]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install
-      run: npm ci
-    - name: npm run test
-      run: npm run test
