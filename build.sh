@@ -2,7 +2,7 @@
 
 npm run compile-less
 
-vagrant ssh -c "cd /vagrant; stack clean; stack build"
+vagrant ssh -c "cd /vagrant; stack clean; stack build; stack install"
 cp /home/vagrant/.local/bin/website ./website
 branch="deploy-$(date +%F)"
 git checkout $branch || git checkout -b $branch
