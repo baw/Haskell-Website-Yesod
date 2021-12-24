@@ -24,7 +24,7 @@ jobs:
     - uses: haskell/actions/setup@v1
       with:
         enable-stack: true
-        stack-version: 'lts-9.21'
+        stack-version: 'latest'
     - name: node version
       run: node --version
     - name: npm version
