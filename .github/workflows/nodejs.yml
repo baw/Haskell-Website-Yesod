@@ -38,6 +38,10 @@ jobs:
       run: node --version
     - name: npm version
       run: npm --version
+    - name: npm install
+      run: npm ci
+    - name: npm run compile-less
+      run: npm run compile-less
     - name: Install phatom js
       run: npm install phantomjs-prebuilt
     - name: Run phantom js in background
