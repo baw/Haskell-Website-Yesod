@@ -1,0 +1,57 @@
+name: Node CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+#   lint:
+#     runs-on: ${{ matrix.operating-system }}
+#     strategy:
+#       matrix:
+#         node-version: [14.17.1]
+#         operating-system: [ 'ubuntu-18.04' ]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: npm install
+#       run: npm ci
+#     - name: npm run lint
+#       run: npm run lint
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        node-version: [14.17.1]
+        operating-system: [ 'ubuntu/focal64' ]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: npm ci
+    - name: npm run build
+      run: npm run build
+  test:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        node-version: [14.17.1]
+        operating-system: [ 'ubuntu/focal64' ]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: npm ci
+    - name: npm run test
+      run: npm run test
