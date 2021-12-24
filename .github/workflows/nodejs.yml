@@ -18,10 +18,10 @@ jobs:
     steps:
     - uses: actions/cache@v2
       with:
-        path:
-          - '~/.npm'
-          - './node_modules'
-          - '.stack-work'
+        path: |
+          ~/.npm
+          ./node_modules
+          .stack-work
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
