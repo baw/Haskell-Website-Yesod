@@ -16,6 +16,10 @@ jobs:
         node-version: [16]
         operating-system: [ 'ubuntu-20.04' ]
     steps:
+    - name: node version
+      run: node --version
+    - name: npm version
+      run: npm --version
     - name: Install phatom js
       run: npm install phantomjs-prebuilt
     - name: Run phantom js in background
