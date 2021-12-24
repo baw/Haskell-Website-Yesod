@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - uses: haskell/actions/setup@v1
       with:
-        ghc: 8.0.2
+        ghc-version: 8.0.2
         enable-stack: true
         stack-version: 'latest'
     - name: node version
