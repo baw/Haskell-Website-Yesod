@@ -17,12 +17,7 @@ jobs:
         operating-system: [ 'ubuntu-20.04' ]
     steps:
     - name: Install phatom js
-      run: |
-        mkdir travis-phantomjs
-        wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-20.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-20.04.tar.bz2
-        tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-20.04.tar.bz2 -C $PWD/travis-phantomjs
-        export PATH=$PWD/travis-phantomjs:$PATH
-        phantomjs --version
+      run: npm install phantomjs-prebuilt
 #   lint:
 #     runs-on: ${{ matrix.operating-system }}
 #     strategy:
