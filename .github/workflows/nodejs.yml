@@ -28,7 +28,7 @@ jobs:
     - name: Install phatom js
       run: npm install phantomjs-prebuilt
     - name: Run phantom js in background
-      run: npm exec phantomjs --webdriver=4444 > /dev/null &
+      run: npm exec phantomjs --webdriver=4444 &
     - name: npm install
       run: npm ci
     - name: npm run test
