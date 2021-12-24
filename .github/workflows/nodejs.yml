@@ -21,6 +21,7 @@ jobs:
         path: |
           ~/.npm
           ./node_modules
+          .stack
           .stack-work
         key: 'node-16-stack-lts-9.21'
     - uses: actions/checkout@v2
