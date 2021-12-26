@@ -23,7 +23,7 @@ jobs:
           ./node_modules
           ~/.stack
           .stack-work
-        key: 'node-16-stack-lts-9.21'
+        key: 'node-16-stack-lts-14.27'
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
