@@ -81,6 +81,7 @@ library
                  , monad-logger                  >= 0.3        && < 0.4
                  , fast-logger                   >= 2.2        && < 2.5
                  , wai-logger                    >= 2.2        && < 2.4
+                 , wai                           >= 3.2        && < 3.3
                  , file-embed
                  , safe
                  , unordered-containers

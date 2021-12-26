@@ -2,16 +2,16 @@ module TestImport
     ( module TestImport
     , module X
     ) where
-
-import Application           (makeFoundation)
+-- (($), (++), (.), ask, intercalate, liftIO, map, return, IO, MonadIO, ReaderT, Text)
+import Application           (makeFoundation, makeLogWare)
 import ClassyPrelude         as X
-import Database.Persist      as X hiding (get)
+import Database.Persist      as X hiding (get, delete, deleteBy)
 import Database.Persist.Sql  (SqlPersistM, SqlBackend, runSqlPersistMPool, rawExecute, rawSql, unSingle, connEscapeName)
-import Foundation            as X
+import Foundation            as X hiding (Handler)
 import Model                 as X
 import Test.Hspec            as X
 import Text.Shakespeare.Text (st)
-import Yesod.Default.Config2 (ignoreEnv, loadAppSettings)
+import Yesod.Default.Config2 (ignoreEnv, loadAppSettings, loadYamlSettings, useEnv)
 import Yesod.Test            as X
 
 runDB :: SqlPersistM a -> YesodExample App a
@@ -23,15 +23,16 @@ runDBWithApp :: App -> SqlPersistM a -> IO a
 runDBWithApp app query = runSqlPersistMPool query (appConnPool app)
 
 
-withApp :: SpecWith App -> Spec
+withApp :: SpecWith (TestApp App) -> Spec
 withApp = before $ do
-    settings <- loadAppSettings
+    settings <- loadYamlSettings
         ["config/test-settings.yml", "config/settings.yml"]
         []
-        ignoreEnv
+        useEnv
     foundation <- makeFoundation settings
     wipeDB foundation
-    return foundation
+    logWare <- liftIO $ makeLogWare foundation
+    return (foundation, logWare)
 
 -- This function will truncate all of the tables in your database.
 -- 'withApp' calls it before each test, creating a clean environment for each

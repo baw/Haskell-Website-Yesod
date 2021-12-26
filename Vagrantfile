@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
     config.vm.network "forwarded_port", guest: 3000, host: 3000
     config.vm.provider "virtualbox" do |v|
         v.name = "Test_Environment"
-        v.memory = 2048
+        v.memory = 4096
     end
 
     config.vm.provision "shell", inline: <<-SHELL
