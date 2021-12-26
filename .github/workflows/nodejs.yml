@@ -43,11 +43,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-#     - uses: haskell/actions/setup@v1
-#       with:
-#         ghc-version: 8.0.2
-#         enable-stack: true
-#         stack-version: 'latest'
+    - uses: haskell/actions/setup@v1
+      with:
+        ghc-version: 8.6.5
+        enable-stack: true
+        stack-version: 'latest'
     - name: create pg db
       run: PGPASSWORD=password createdb -U vagrant -h localhost -p 5432 -O vagrant website
     - name: node version
