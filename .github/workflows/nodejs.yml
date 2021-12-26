@@ -65,15 +65,15 @@ jobs:
     - name: stack install
       run: stack install
     - name: run app
-      run: website > /dev/null &
+      run: website &
     - name: sleep for 5 seconds
       run: sleep 5
     - name: stack test
       run: stack --no-terminal --skip-ghc-check test
     - name: npm install
       run: npm ci
-#     - name: npm run test
-#       run: npm run test
+    - name: npm run test
+      run: npm run test
 #   lint:
 #     runs-on: ${{ matrix.operating-system }}
 #     strategy:
