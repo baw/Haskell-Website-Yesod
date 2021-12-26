@@ -11,6 +11,7 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.operating-system }}
+    container: 'ubuntu:focal-20211006'
     strategy:
       matrix:
         node-version: [16]
