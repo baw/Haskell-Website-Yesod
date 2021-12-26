@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.operating-system }}
-    container: 'ubuntu:focal-20211006'
+    container: 'haskell'
     services:
       postgres:
         image: postgres
@@ -38,11 +38,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: haskell/actions/setup@v1
-      with:
-        ghc-version: 8.0.2
-        enable-stack: true
-        stack-version: 'latest'
+#     - uses: haskell/actions/setup@v1
+#       with:
+#         ghc-version: 8.0.2
+#         enable-stack: true
+#         stack-version: 'latest'
     - name: node version
       run: node --version
     - name: npm version
