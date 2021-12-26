@@ -47,9 +47,9 @@ jobs:
 #         enable-stack: true
 #         stack-version: 'latest'
     - name: create pg user
-      run: psql -c "CREATE USER vagrant WITH PASSWORD 'password';"
+      run: psql -h localhost -p 5432 -c "CREATE USER vagrant WITH PASSWORD 'password';"
     - name: create pg db
-      run: createdb -O vagrant website_test
+      run: createdb -h localhost -p 5432 -O vagrant website_test
     - name: node version
       run: node --version
     - name: npm version
