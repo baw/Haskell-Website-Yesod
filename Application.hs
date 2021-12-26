@@ -4,6 +4,7 @@ module Application
     , appMain
     , develMain
     , makeFoundation
+    , makeLogWare
     -- * for DevelMain
     , getApplicationRepl
     , shutdownApp
@@ -17,6 +18,7 @@ import Database.Persist.Postgresql          (createPostgresqlPool, pgConnStr,
                                              pgPoolSize, runSqlPool)
 import Import
 import Language.Haskell.TH.Syntax           (qLocation)
+import Network.Wai (Middleware)
 import Network.Wai.Handler.Warp             (Settings, defaultSettings,
                                              defaultShouldDisplayException,
                                              runSettings, setHost,
@@ -176,3 +178,16 @@ handler h = getAppSettings >>= makeFoundation >>= flip unsafeHandler h
 -- | Run DB queries
 db :: ReaderT SqlBackend (HandlerT App IO) a -> IO a
 db = handler . runDB
+
+makeLogWare :: App -> IO Middleware
+makeLogWare foundation =
+    mkRequestLogger def
+        { outputFormat =
+            if appDetailedRequestLogging $ appSettings foundation
+                then Detailed True
+                else Apache
+                        (if appIpFromHeader $ appSettings foundation
+                            then FromFallback
+                            else FromSocket)
+        , destination = Logger $ loggerSet $ appLogger foundation
+        }
