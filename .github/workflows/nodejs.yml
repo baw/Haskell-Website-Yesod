@@ -49,7 +49,7 @@ jobs:
 #         enable-stack: true
 #         stack-version: 'latest'
     - name: create pg db
-      run: createdb -h localhost -p 5432 -O vagrant website
+      run: PGPASSWORD=password createdb -U vagrant -h localhost -p 5432 -O vagrant website
     - name: node version
       run: node --version
     - name: npm version
