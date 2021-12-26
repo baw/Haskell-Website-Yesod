@@ -64,8 +64,8 @@ jobs:
       run: website > /dev/null &
     - name: sleep for 5 seconds
       run: sleep 5
-#     - name: stack test
-#       run: stack --no-terminal --skip-ghc-check test
+    - name: stack test
+      run: stack --no-terminal --skip-ghc-check test
     - name: npm install
       run: npm ci
 #     - name: npm run test
