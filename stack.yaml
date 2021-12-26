@@ -5,5 +5,4 @@ flags:
 packages:
 - '.'
 extra-deps: []
-allow-newer: true
 resolver: lts-14.27
