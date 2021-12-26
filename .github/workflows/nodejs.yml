@@ -66,8 +66,6 @@ jobs:
       run: stack install
     - name: run app
       run: website &
-    - name: sleep for 5 seconds
-      run: sleep 5
     - name: stack test
       run: stack --no-terminal --skip-ghc-check test
     - name: npm install
