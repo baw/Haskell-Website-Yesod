@@ -12,14 +12,14 @@ jobs:
   test:
     runs-on: ${{ matrix.operating-system }}
     container: 'haskell'
-    services:
-      postgres:
-        image: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+#     services:
+#       postgres:
+#         image: postgres
+#         options: >-
+#           --health-cmd pg_isready
+#           --health-interval 10s
+#           --health-timeout 5s
+#           --health-retries 5
     strategy:
       matrix:
         node-version: [16]
