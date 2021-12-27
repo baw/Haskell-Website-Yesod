@@ -3,7 +3,7 @@ const { assert } = intern.getPlugin('chai');
 module.exports =  {
     clickLink: function (remote, name) {
         return function () {
-            return remote.parent
+            return remote
                 .findById(name + 'Link')
                     .click()
                     .end();
@@ -12,7 +12,7 @@ module.exports =  {
 
     checkPagesLowered: function (remote, number, name) {
         return function () {
-            return remote.parent
+            return remote
                 .findAllByClassName('lower')
                     .then(function (nodes) {
                         assert.equal(nodes.length, number);
@@ -30,7 +30,7 @@ module.exports =  {
 
     checkLink: function (remote, name) {
         return function () {
-            return remote.parent
+            return remote
                 .then(self.clickLink(name))
                 .then(self.checkPagesLowered(1, name))
                 .then(self.checkUrl(name));
@@ -39,7 +39,7 @@ module.exports =  {
 
     checkUrl: function (remote, name) {
         return function () {
-            return remote.parent
+            return remote
                 .getCurrentUrl()
                 .then(function (url) {
                     name && assert.include(url, '/' + name);
