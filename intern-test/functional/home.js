@@ -1,5 +1,5 @@
 const { describe, beforeEach, it, b } = intern.getInterface('bdd');
-const { expect } = intern.getPlugin('chai');
+const { assert } = intern.getPlugin('chai');
 const util = require('./util');
 
 describe('homePage', function () {
