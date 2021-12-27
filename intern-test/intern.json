@@ -1,0 +1,13 @@
+{
+    "$schema": "../node_modules/intern/schemas/config.json",
+    "capabilities": {
+    },
+    "environments": [
+        { "browserName": "phantomjs" }
+    ],
+    "maxConcurrency": 1,
+
+    "tunnel":"null",
+
+    "functionalSuites": [ "intern-test/functional/*.js" ]
+}

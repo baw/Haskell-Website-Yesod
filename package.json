@@ -6,13 +6,12 @@
     "type": "git",
     "url": "git@github.com:baw/Haskell-Website-Yesod.git"
   },
-  "dependencies": {},
   "devDependencies": {
-    "intern": "^3.2.3",
+    "intern": "^4.10.1",
     "less": "^4.1.2"
   },
   "scripts": {
-    "compile-less": "./node_modules/.bin/lessc ./less/main.less ./static/css/main.css",
-    "test": "./node_modules/.bin/intern-runner config=intern-test/intern"
+    "compile-less": "npm exec lessc ./less/main.less ./static/css/main.css",
+    "test": "npm exec intern config=intern-test/intern.json"
   }
 }
