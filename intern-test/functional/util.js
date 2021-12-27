@@ -29,11 +29,12 @@ module.exports =  {
     },
 
     checkLink: function (remote, name) {
+        const that = this;
         return function () {
             return remote
-                .then(self.clickLink(name))
-                .then(self.checkPagesLowered(1, name))
-                .then(self.checkUrl(name));
+                .then(that.clickLink(name))
+                .then(that.checkPagesLowered(1, name))
+                .then(that.checkUrl(name));
         };
     },
 
