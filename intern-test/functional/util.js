@@ -32,9 +32,9 @@ module.exports =  {
         const that = this;
         return function () {
             return remote
-                .then(that.clickLink(name))
-                .then(that.checkPagesLowered(1, name))
-                .then(that.checkUrl(name));
+                .then(that.clickLink(remote, name))
+                .then(that.checkPagesLowered(remote, 1, name))
+                .then(that.checkUrl(remote, name));
         };
     },
 
