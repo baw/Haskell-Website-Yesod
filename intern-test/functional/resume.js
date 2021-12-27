@@ -3,13 +3,13 @@ const { expect } = intern.getPlugin('chai');
 const util = require('./util');
 
 describe('resumePage', function () {
-    beforeEach(function () {
-        return this.remote
+    beforeEach(function ({ remote }) {
+        return remote
             .get('http://localhost:3000/resume');
     });
 
-    it('page lowers', function () {
-        return this.remote
+    it('page lowers', function ({ remote }) {
+        return remote
             .then(util.checkPagesLowered(1, 'resume'));
     });
 });

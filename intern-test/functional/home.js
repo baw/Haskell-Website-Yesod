@@ -3,14 +3,14 @@ const { expect } = intern.getPlugin('chai');
 const util = require('./util');
 
 describe('homePage', function () {
-    beforeEach(function () {
-        return this.remote
+    beforeEach(function ({ remote }) {
+        return remote
             .get('http://localhost:3000/');
     });
 
     describe('has correct content', function () {
-        it('name', function () {
-            return this.remote
+        it('name', function ({ remote }) {
+            return remote
                 .findByCssSelector('#main h1')
                     .getVisibleText()
                     .then(function (text) {
@@ -18,8 +18,8 @@ describe('homePage', function () {
                     });
         });
 
-        it('role', function () {
-            return this.remote
+        it('role', function ({ remote }) {
+            return remote
                 .findByCssSelector('#main h2')
                     .getVisibleText()
                     .then(function (text) {
@@ -29,15 +29,15 @@ describe('homePage', function () {
     });
 
     describe('internal links work', function () {
-        beforeEach(function () {
-            return this.remote
+        beforeEach(function ({ remote }) {
+            return remote
                 .then(util.checkPagesLowered(0));
         });
 
         var links = ['projects', 'resume'];
         links.forEach(function (name) {
-            it(name, function () {
-                return this.remote
+            it(name, function ({ remote }) {
+                return remote
                     .then(util.checkLink(name));
             });
         });

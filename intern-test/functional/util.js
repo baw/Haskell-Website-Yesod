@@ -2,8 +2,8 @@ const { assert } = intern.getPlugin('chai');
 
 module.exports =  {
     clickLink: function (name) {
-        return function () {
-            return this.parent
+        return function ({ remote }) {
+            return remote.parent
                 .findById(name + 'Link')
                     .click()
                     .end();
@@ -11,8 +11,8 @@ module.exports =  {
     },
 
     checkPagesLowered: function (number, name) {
-        return function () {
-            return this.parent
+        return function ({ remote }) {
+            return remote.parent
                 .findAllByClassName('lower')
                     .then(function (nodes) {
                         assert.equal(nodes.length, number);
@@ -29,9 +29,8 @@ module.exports =  {
     },
 
     checkLink: function (name) {
-        var self = this;
-        return function () {
-            return this.parent
+        return function ({ remote }) {
+            return remote.parent
                 .then(self.clickLink(name))
                 .then(self.checkPagesLowered(1, name))
                 .then(self.checkUrl(name));
@@ -39,8 +38,8 @@ module.exports =  {
     },
 
     checkUrl: function (name) {
-        return function () {
-            return this.parent
+        return function ({ remote }) {
+            return remote.parent
                 .getCurrentUrl()
                 .then(function (url) {
                     name && assert.include(url, '/' + name);
