@@ -8,11 +8,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "intern": "^4.10.1",
+    "intern": "^3.2.3",
     "less": "^4.1.2"
   },
   "scripts": {
     "compile-less": "./node_modules/.bin/lessc ./less/main.less ./static/css/main.css",
-    "test": "./node_modules/.bin/intern config=intern-test/intern"
+    "test": "./node_modules/.bin/intern-runner config=intern-test/intern"
   }
 }
