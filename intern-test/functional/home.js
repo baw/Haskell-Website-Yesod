@@ -31,14 +31,14 @@ describe('homePage', function () {
     describe('internal links work', function () {
         beforeEach(function ({ remote }) {
             return remote
-                .then(util.checkPagesLowered(0));
+                .then(util.checkPagesLowered(remote, 0));
         });
 
         var links = ['projects', 'resume'];
         links.forEach(function (name) {
             it(name, function ({ remote }) {
                 return remote
-                    .then(util.checkLink(name));
+                    .then(util.checkLink(remote, name));
             });
         });
     });

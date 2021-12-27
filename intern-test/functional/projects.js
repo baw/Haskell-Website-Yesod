@@ -10,6 +10,6 @@ describe('projectPage', function () {
 
     it('page lowers', function ({ remote }) {
         return remote
-            .then(util.checkPagesLowered(1, 'projects'));
+            .then(util.checkPagesLowered(remote, 1, 'projects'));
     });
 });

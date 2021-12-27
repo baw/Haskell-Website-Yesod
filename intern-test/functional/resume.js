@@ -10,6 +10,6 @@ describe('resumePage', function () {
 
     it('page lowers', function ({ remote }) {
         return remote
-            .then(util.checkPagesLowered(1, 'resume'));
+            .then(util.checkPagesLowered(remote, 1, 'resume'));
     });
 });
