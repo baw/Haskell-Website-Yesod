@@ -1,7 +1,7 @@
 <div class="scroll">
     <div class="main" id="main">
       <h1>Brian Weiser
-      <h2>Web Developer
+      <h2>Software Engineer
       <ul class="mainLinks">
         <li>
           <a id="projectsLink" href="/projects">

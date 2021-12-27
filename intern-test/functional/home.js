@@ -24,7 +24,7 @@ define([
                     .findByCssSelector('#main h2')
                         .getVisibleText()
                         .then(function (text) {
-                            assert.equal(text, 'Web Developer');
+                            assert.equal(text, 'Software Engineer');
                         });
             });
         });
