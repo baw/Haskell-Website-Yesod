@@ -1,17 +1,15 @@
-define([
-    'intern!tdd',
-    'intern/chai!assert',
-    './util'
-], function (tdd, assert, util) {
-    tdd.suite('resumePage', function () {
-        tdd.beforeEach(function () {
-            return this.remote
-                .get('http://localhost:3000/resume');
-        });
+const { describe, beforeEach, it, b } = intern.getInterface('bdd');
+const { expect } = intern.getPlugin('chai');
+const util = require('./util');
 
-        tdd.test('page lowers', function () {
-            return this.remote
-                .then(util.checkPagesLowered(1, 'resume'));
-        });
+describe('resumePage', function () {
+    beforeEach(function ({ remote }) {
+        return remote
+            .get('http://localhost:3000/resume');
+    });
+
+    it('page lowers', function ({ remote }) {
+        return remote
+            .then(util.checkPagesLowered(remote, 1, 'resume'));
     });
 });
