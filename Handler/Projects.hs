@@ -10,5 +10,5 @@ getProjectsR = do
     let clickId = "projectsLink" :: Text
     projects <- getProjects
     defaultLayout $ do
-        setTitle "Brian Weiser - Web Developer"
+        setTitle "Brian Weiser - Software Engineer"
         $(widgetFile "homepage")

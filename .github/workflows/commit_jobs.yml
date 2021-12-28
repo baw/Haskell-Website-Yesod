@@ -1,0 +1,107 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ${{ matrix.operating-system }}
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: website_test
+          POSTGRES_USER: vagrant
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    strategy:
+      matrix:
+        node-version: [16]
+        operating-system: [ 'ubuntu-20.04' ]
+    steps:
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.npm
+          ./node_modules
+          ~/.stack
+          .stack-work
+        key: 'node-16-stack-lts-14.27'
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: haskell/actions/setup@v1
+      with:
+        ghc-version: 8.6.5
+        enable-stack: true
+        stack-version: 'latest'
+    - name: create pg db
+      run: PGPASSWORD=password createdb -U vagrant -h localhost -p 5432 -O vagrant website
+    - name: node version
+      run: node --version
+    - name: npm version
+      run: npm --version
+    - name: npm install
+      run: npm ci
+    - name: npm run compile-less
+      run: npm run compile-less
+    - name: Install phatom js
+      run: npm install phantomjs-prebuilt
+    - name: Run phantom js in background
+      run: npm exec -- phantomjs --webdriver=4444 &
+    - name: stack install
+      run: stack install
+    - name: run app
+      run: website &
+    - name: stack test
+      run: stack --no-terminal --skip-ghc-check test
+    - name: npm install
+      run: npm ci
+    - name: npm run test
+      run: npm run test
+#   lint:
+#     runs-on: ${{ matrix.operating-system }}
+#     strategy:
+#       matrix:
+#         node-version: [16]
+#         operating-system: [ 'ubuntu-20.04' ]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: npm install
+#       run: npm ci
+#     - name: npm run lint
+#       run: npm run lint
+#   build:
+#     needs: setup
+#     runs-on: ${{ matrix.operating-system }}
+#     strategy:
+#       matrix:
+#         node-version: [16]
+#         operating-system: [ 'ubuntu-20.04' ]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: npm install
+#       run: npm ci
+#     - name: npm run build
+#       run: npm run build

@@ -12,7 +12,7 @@ spec = withApp $ do
       it "has the right content" $ do
         get HomeR
         htmlAnyContain "h1" "Brian Weiser"
-        htmlAnyContain "h2" "Web Developer"
+        htmlAnyContain "h2" "Software Engineer"
 
       describe "useful links" $ do
         it "has a link to projects" $ do

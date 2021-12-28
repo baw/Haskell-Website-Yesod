@@ -5,7 +5,7 @@ import Prelude ((!!), head)
 import Database.Persist.Sql (fromSqlKey, toSqlKey)
 
 title :: IsString a => a
-title = "Blog - Brian Weiser - Web Developer"
+title = "Blog - Brian Weiser - Software Engineer"
 
 maybeElement :: [a] -> Int -> Maybe a
 maybeElement xs i = if length xs > i then Just (xs !! i) else Nothing

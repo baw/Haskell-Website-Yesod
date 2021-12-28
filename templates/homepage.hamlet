@@ -1,7 +1,7 @@
 <div class="scroll">
     <div class="main" id="main">
       <h1>Brian Weiser
-      <h2>Web Developer
+      <h2>Software Engineer
       <ul class="mainLinks">
         <li>
           <a id="projectsLink" href="/projects">
@@ -20,8 +20,9 @@
                 <img src="#{projectImageUrl project}" alt="#{projectName project}">
               <a href="#{projectUrl project}">
                 #{projectName project}
-              <a href="#{projectGithubUrl project}">
-                GitHub Repo
+              $maybe url <- projectGithubUrl project
+                <a href="#{ url }">
+                  GitHub Repo
 
         <p class="moreProjects">Check back for more projects!
 
